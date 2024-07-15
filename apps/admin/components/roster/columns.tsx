@@ -87,6 +87,14 @@ export const columns: ColumnDef<Athlete>[] = [
     header: "Age",
   },
   {
+    accessorKey: 'active',
+    header: 'Status',
+    cell: ({row}) => {
+      return row.original.active ? "Active" : "Inactive"
+    },
+    enableColumnFilter: true
+  },
+  {
     id: "actions",
     cell: ({ row }) => {
       const athlete = row.original;
@@ -109,7 +117,9 @@ export const columns: ColumnDef<Athlete>[] = [
               >
                 Copy Swimmer's ID
               </DropdownMenuItem>
-              <DropdownMenuItem>Mark as Inactive</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => alert('swimmers status changed')}> {/*TODO this needs change the raw data soon*/}
+                Mark as {row.original.active?"Inactive":"Active"}
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link

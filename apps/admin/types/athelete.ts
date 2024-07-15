@@ -16,11 +16,15 @@ interface EmergencyContact extends BaseContact {
   relationship: string;
 }
 
+
+// there probably should be a team ID here as well to map the members to a team?
+
 export interface Athlete {
   id: string;
   name: string;
   gender: "Male" | "Female";
-  age: number;
+  age: number;  //should age be calculated on the fly or based on an 'age up' date in the roster page?
+  active: boolean;
   dateOfBirth: string;
   trainingGroups: string[];
   practiceGroup: string;

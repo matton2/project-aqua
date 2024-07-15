@@ -1,14 +1,16 @@
 import type { Athlete } from "@/types";
+import type { Staff } from "@/types"
 
 export const mockAthleteData: Athlete[] = [
   {
     id: "a1b2c3",
     name: "Emily Johnson",
     gender: "Female",
-    age: 16,
+    age: 16, 
     dateOfBirth: "2008-05-12",
     trainingGroups: ["Junior Squad", "Freestyle Masters", "Butterfly Training"],
     practiceGroup: "Group A",
+    active: true,
     personalRecords: [
       { event: "50 Free", time: "26.45" },
       { event: "100 Breaststroke", time: "1:15.78" },
@@ -49,6 +51,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2006-09-23",
     trainingGroups: ["Senior Squad", "Backstroke Champions"],
     practiceGroup: "Group B",
+    active: true,
     personalRecords: [
       { event: "200 Backstroke", time: "2:20.34" },
       { event: "50 Backstroke", time: "30.21" },
@@ -89,6 +92,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2010-03-08",
     trainingGroups: ["Development Squad", "Breaststroke Prospects"],
     practiceGroup: "Group C",
+    active: true,
     personalRecords: [
       { event: "200 Breaststroke", time: "2:45.78" },
       { event: "100 Breaststroke", time: "1:16.45" },
@@ -129,6 +133,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2009-11-15",
     trainingGroups: ["Junior Squad", "Freestyle Masters"],
     practiceGroup: "Group A",
+    active: true,
     personalRecords: [
       { event: "50 Free", time: "25.98" },
       { event: "100 Free", time: "56.34" },
@@ -169,6 +174,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2007-07-19",
     trainingGroups: ["Senior Squad", "Butterfly Training"],
     practiceGroup: "Group B",
+    active: true,
     personalRecords: [
       { event: "50 Butterfly", time: "27.45" },
       { event: "100 Butterfly", time: "1:00.12" },
@@ -209,6 +215,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2011-02-28",
     trainingGroups: ["Development Squad", "Backstroke Champions"],
     practiceGroup: "Group C",
+    active: true,
     personalRecords: [
       { event: "50 Backstroke", time: "32.87" },
       { event: "100 Backstroke", time: "1:10.45" },
@@ -249,6 +256,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2005-12-03",
     trainingGroups: ["Senior Squad", "Breaststroke Prospects"],
     practiceGroup: "Group A",
+    active: true,
     personalRecords: [
       { event: "50 Breaststroke", time: "33.56" },
       { event: "100 Breaststroke", time: "1:15.78" },
@@ -289,6 +297,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2008-04-27",
     trainingGroups: ["Junior Squad", "Freestyle Masters"],
     practiceGroup: "Group B",
+    active: true,
     personalRecords: [
       { event: "50 Free", time: "24.76" },
       { event: "100 Free", time: "53.21" },
@@ -329,6 +338,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2012-08-14",
     trainingGroups: ["Development Squad", "Breaststroke Prospects"],
     practiceGroup: "Group C",
+    active: true,
     personalRecords: [
       { event: "50 Breaststroke", time: "36.12" },
       { event: "100 Breaststroke", time: "1:19.34" },
@@ -369,6 +379,7 @@ export const mockAthleteData: Athlete[] = [
     dateOfBirth: "2010-06-20",
     trainingGroups: ["Junior Squad", "Backstroke Champions"],
     practiceGroup: "Group A",
+    active: false,
     personalRecords: [
       { event: "50 Backstroke", time: "29.45" },
       { event: "100 Backstroke", time: "1:03.89" },
@@ -450,3 +461,27 @@ export const mockTeams = [
     ),
   },
 ];
+
+export const mockStaffData: Staff[] = [
+  {
+    id: "coach1",
+    teamId: '1',
+    name: "Jane Doe",
+    role: "Head Coach",
+    email: "janedoe@example.com",
+    phone: '555-555-5555',
+    admin: true,
+    bio: 'somebio page or .com or something'
+  },
+  {
+    id: "coach2",
+    teamId: '1',
+    name: "Joe Doe",
+    role: "Assistant Coach",
+    email: "joedoe@example.com",
+    phone: '888-555-5555',
+    admin: false,
+    bio: 'somebio page or .com or something'
+  }
+
+]

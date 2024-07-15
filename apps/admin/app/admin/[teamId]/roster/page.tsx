@@ -10,24 +10,23 @@ import {
 } from "@repo/ui/card";
 import { Button, buttonVariants } from "@repo/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@repo/ui/tabs";
-import {
-  Table,
-  TableHeader,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@repo/ui/table";
 import AthleteInfo from "@/components/roster/athlete-info";
-import { mockAthleteData } from "@/lib/mock-data";
+import { mockAthleteData, mockStaffData } from "@/lib/mock-data";
 import { columns } from "@/components/roster/columns";
+import { staffColumns } from "@/components/roster/staffColumns";
 import { DataTable } from "@/components/roster/data-table";
 
 import { Athlete } from "@/types";
+import { Staff } from "@/types"
 import type { Metadata, ResolvingMetadata } from "next";
 
-async function getData({ teamId }: { teamId: string }): Promise<Athlete[]> {
+async function getAthleteData({ teamId }: { teamId: string }): Promise<Athlete[]> {
   return mockAthleteData;
+}
+
+async function getStaffData({ teamId}: {teamId: string}): Promise<Staff[]> {
+  const thisStaff = mockStaffData.filter(el => el.teamId === teamId)
+  return thisStaff
 }
 
 export async function generateMetadata(
@@ -68,7 +67,8 @@ export default async function RosterPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const { teamId } = params;
-  const rosterData = await getData({ teamId });
+  const rosterData = await getAthleteData({ teamId });
+  const staffData = await getStaffData({ teamId })
   const { athleteId } = searchParams;
   const selectedAthlete = rosterData.find(
     (athlete) => athlete.id === athleteId
@@ -168,40 +168,7 @@ export default async function RosterPage({
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Name</TableHead>
-                        <TableHead className="hidden sm:table-cell">
-                          Role
-                        </TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Email
-                        </TableHead>
-                        <TableHead className="hidden md:table-cell">
-                          Phone
-                        </TableHead>
-                        {/* a table head that a switch would be useful for */}
-                        <TableHead className="hidden md:table-cell">
-                          Admin
-                        </TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>Jane Doe</TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                          Coach
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          janedoe@example.com
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                          555-555-5555
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
+                  <DataTable columns={staffColumns} data={mockStaffData} />
                 </CardContent>
               </Card>
             </TabsContent>
